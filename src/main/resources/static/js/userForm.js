@@ -8,12 +8,12 @@ function saveUser() {
         email:$("#emailUser").val(),
         password:$("#passwordUser").val(),
         zone:$("#zoneUser").val(),
-        type:$("#typeUser").val(),
+        type:$("#typeUser").val()
     };
     let dataToSend=JSON.stringify(mydata);
     console.log(mydata);
     $.ajax({
-        url: "http://localhost:8080/api/user/save",
+        url: "http://localhost:8080/api/user/new",
         type: "POST",
         data: mydata,
         dataType: "JSON",
