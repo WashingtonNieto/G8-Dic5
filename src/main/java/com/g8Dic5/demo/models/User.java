@@ -27,4 +27,7 @@ public class User {
     private String password;
     private String zone;
     private String type;
+
+    public User(String email, String password, String no_definido) {
+    }
 }

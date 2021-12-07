@@ -59,4 +59,19 @@ public class UserService {
     public void delete(Integer id){
         userRepository.delete(id);
     }
+
+    public boolean existeEmail(String email) {
+        return userRepository.existeEmail(email);
+    }
+
+    public User autenticarUsuario(String email, String password) {
+        Optional<User> usuario = userRepository.autenticarUsuario(email, password);
+
+        if (usuario.isEmpty()) {
+            return new User(email, password, "NO DEFINIDO");
+        } else {
+            return usuario.get();
+        }
+    }
+
 }

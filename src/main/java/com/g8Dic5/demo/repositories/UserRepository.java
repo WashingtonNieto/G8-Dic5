@@ -35,5 +35,14 @@ public class UserRepository {
         userCrudRepository.deleteById(id);
     }
 
+    public boolean existeEmail(String email) {
+        Optional<User> usuario = userCrudRepository.findByEmail(email);
+
+        return !usuario.isEmpty();
+    }
+
+    public Optional<User> autenticarUsuario(String email, String password) {
+        return userCrudRepository.findByEmailAndPassword(email, password);
+    }
 
 }
