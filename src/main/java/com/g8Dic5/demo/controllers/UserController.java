@@ -47,7 +47,7 @@ public class UserController {
     }
 
 */
-    @PutMapping("/update/{id}")
+    @PutMapping("/update/1")
     public ResponseEntity<User> update(@RequestBody User user) {
         User p = userService.update(user);
         return new ResponseEntity<>(p, HttpStatus.OK);
@@ -65,7 +65,7 @@ public class UserController {
         return userService.autenticarUsuario(email, password);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete/1")
     public ResponseEntity delete(@PathVariable Integer id) {
         userService.delete(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
