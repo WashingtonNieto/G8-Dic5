@@ -26,10 +26,18 @@ public class ClotheController {
         return clotheService.getById(id).orElse(null);
     }
 
+    /*
     @PutMapping("/update/{reference}")
     public ResponseEntity<Clothe> update(@RequestBody Clothe clothe){
         Clothe u = clotheService.update(clothe);
         return new ResponseEntity(u, HttpStatus.OK);
+    }
+    */
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Clothe update(@RequestBody Clothe clothe) {
+        return clotheService.update(clothe);
     }
 
     @PostMapping("/new")
