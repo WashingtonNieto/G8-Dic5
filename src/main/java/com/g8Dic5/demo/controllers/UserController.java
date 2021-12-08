@@ -9,9 +9,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
+import static org.springframework.web.bind.annotation.RequestMethod.PUT;
+
 @RestController
-@RequestMapping("/api/user")
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+@RequestMapping(value ="/api/user", method = {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT, DELETE})
+@CrossOrigin(origins = "*")
+
+
 
 public class UserController {
 
@@ -47,7 +52,7 @@ public class UserController {
     }
 
 */
-    @PutMapping("/update/1")
+    @PutMapping("/update/{id}")
     public ResponseEntity<User> update(@RequestBody User user) {
         User p = userService.update(user);
         return new ResponseEntity<>(p, HttpStatus.OK);
@@ -65,7 +70,7 @@ public class UserController {
         return userService.autenticarUsuario(email, password);
     }
 
-    @DeleteMapping("/delete/1")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity delete(@PathVariable Integer id) {
         userService.delete(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
