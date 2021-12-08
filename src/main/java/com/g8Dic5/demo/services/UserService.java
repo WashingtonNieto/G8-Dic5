@@ -53,6 +53,7 @@ public class UserService {
         existeUser.get().setPassword((user.getPassword()));
         existeUser.get().setZone((user.getZone()));
         existeUser.get().setType((user.getType()));
+
         return userRepository.save(existeUser.get());
     }
 

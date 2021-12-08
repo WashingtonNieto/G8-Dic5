@@ -26,7 +26,7 @@ public class ClotheController {
         return clotheService.getById(id).orElse(null);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update/{reference}")
     public ResponseEntity<Clothe> update(@RequestBody Clothe clothe){
         Clothe u = clotheService.update(clothe);
         return new ResponseEntity(u, HttpStatus.OK);

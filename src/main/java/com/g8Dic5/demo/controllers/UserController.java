@@ -37,11 +37,18 @@ public class UserController {
         User u = userService.update(user);
         return new ResponseEntity(u, HttpStatus.OK);
     }
-*/
+
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public User update(@RequestBody User user) {
         return userService.update(user);
+    }
+
+*/
+    @PutMapping("/update/{id}")
+    public ResponseEntity<User> update(@RequestBody User user) {
+        User p = userService.update(user);
+        return new ResponseEntity<>(p, HttpStatus.OK);
     }
 
 
