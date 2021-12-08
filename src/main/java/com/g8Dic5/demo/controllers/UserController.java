@@ -9,12 +9,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
-import static org.springframework.web.bind.annotation.RequestMethod.PUT;
-
 @RestController
-@RequestMapping(value ="/api/user", method = {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT, DELETE})
-@CrossOrigin(origins = "*")
+@RequestMapping(value={"/api/user"},method = RequestMethod.DELETE)
+
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 
 
 
