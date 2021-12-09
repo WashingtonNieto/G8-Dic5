@@ -9,8 +9,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping(value={"/api/user"},
+        produces = "application/json",
+        method=RequestMethod.PUT)
+
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+
+
 public class UserController {
 
     @Autowired
@@ -31,12 +38,26 @@ public class UserController {
         return userService.existeEmail(email);
     }
 
-
+/*
     @PutMapping("/update/{id}")
     public ResponseEntity<User> update(@RequestBody User user) {
         User u = userService.update(user);
         return new ResponseEntity(u, HttpStatus.OK);
     }
+
+    @PutMapping("/update/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public User update(@RequestBody User user) {
+        return userService.update(user);
+    }
+
+*/
+    @PutMapping("/update/{id}")
+    public ResponseEntity<User> update(@RequestBody User user) {
+        User p = userService.update(user);
+        return new ResponseEntity<>(p, HttpStatus.OK);
+    }
+
 
     @PostMapping("/new")
     public ResponseEntity<User> post(@RequestBody User user) {
@@ -49,13 +70,18 @@ public class UserController {
         return userService.autenticarUsuario(email, password);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id:\\d+}")
     public ResponseEntity delete(@PathVariable Integer id) {
         userService.delete(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
-
-
+    /*
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable("id") int id) {
+        return userService.delete(id);
+    }
+*/
 
 }

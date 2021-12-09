@@ -43,7 +43,7 @@ public class ClotheService {
 
         existeClothe.get().setReference((clothe.getReference()));
         existeClothe.get().setCategory((clothe.getCategory()));
-        //existeClothe.get().setSize((clothe.getSize()));
+        existeClothe.get().setSize((clothe.getSize()));
         existeClothe.get().setDescription((clothe.getDescription()));
         existeClothe.get().setAvailability((clothe.isAvailability()));
         existeClothe.get().setPrice((clothe.getPrice()));

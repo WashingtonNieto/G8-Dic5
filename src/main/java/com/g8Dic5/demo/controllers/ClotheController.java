@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/clothe")
+
 public class ClotheController {
 
     @Autowired
@@ -26,11 +27,20 @@ public class ClotheController {
         return clotheService.getById(id).orElse(null);
     }
 
+    /*
+    @PutMapping("/update/{reference}")
+    public ResponseEntity<Clothe> update(@RequestBody Clothe clothe){
+        Clothe u = clotheService.update(clothe);
+        return new ResponseEntity(u, HttpStatus.OK);
+    }
+    */
+
     @PutMapping("/update/{id}")
     public ResponseEntity<Clothe> update(@RequestBody Clothe clothe){
         Clothe u = clotheService.update(clothe);
         return new ResponseEntity(u, HttpStatus.OK);
     }
+
 
     @PostMapping("/new")
     public ResponseEntity<Clothe> post(@RequestBody Clothe clothe){
