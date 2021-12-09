@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
-@RequestMapping(value={"/api/user"},method = RequestMethod.DELETE)
+@RequestMapping(value={"/api/user"},
+        produces = "application/json",
+        method=RequestMethod.PUT)
 
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
-
 
 
 public class UserController {
@@ -68,7 +70,7 @@ public class UserController {
         return userService.autenticarUsuario(email, password);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id:\\d+}")
     public ResponseEntity delete(@PathVariable Integer id) {
         userService.delete(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
