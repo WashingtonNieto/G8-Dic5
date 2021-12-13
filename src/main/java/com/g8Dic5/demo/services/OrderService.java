@@ -1,7 +1,6 @@
 package com.g8Dic5.demo.services;
 
 import com.g8Dic5.demo.models.Order;
-import com.g8Dic5.demo.models.User;
 import com.g8Dic5.demo.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

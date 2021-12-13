@@ -16,6 +16,6 @@ public interface IUserCrudRepository extends MongoRepository<User, Integer> {
     //List<User> findByMonthBirthDate(String monthBirthDay);
 
     //para seleccionar el usuario con el id maximo
-    Optional<User> findTopByUserByIdDesc();
+    Optional<User> findTopByOrderByIdDesc();
 }
 
