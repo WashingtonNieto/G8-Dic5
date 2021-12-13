@@ -4,18 +4,15 @@ import com.g8Dic5.demo.models.User;
 import com.g8Dic5.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
-@RequestMapping(value={"/api/user"},
-        produces = "application/json",
-        method=RequestMethod.PUT)
-
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+@RequestMapping("/api/user")
+@CrossOrigin("*")
 
 
 public class UserController {
@@ -29,40 +26,26 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public User getById(@PathVariable Integer id) {
-        return userService.getById(id).orElse(null);
+    public Optional<User> getUser(@PathVariable("id") int id) {
+        return userService.getUser(id);
     }
 
-    @GetMapping("/emailexist/{email}")
-    public boolean existeEmail(@PathVariable("email") String email) {
-        return userService.existeEmail(email);
+    @PostMapping("/new")
+    @ResponseStatus(HttpStatus.CREATED)
+    public User create(@RequestBody User user) {
+        return userService.create(user);
     }
 
-/*
-    @PutMapping("/update/{id}")
-    public ResponseEntity<User> update(@RequestBody User user) {
-        User u = userService.update(user);
-        return new ResponseEntity(u, HttpStatus.OK);
-    }
-
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public User update(@RequestBody User user) {
         return userService.update(user);
     }
 
-*/
-    @PutMapping("/update/{id}")
-    public ResponseEntity<User> update(@RequestBody User user) {
-        User p = userService.update(user);
-        return new ResponseEntity<>(p, HttpStatus.OK);
-    }
-
-
-    @PostMapping("/new")
-    public ResponseEntity<User> post(@RequestBody User user) {
-        User u = userService.save(user);
-        return new ResponseEntity(u, HttpStatus.CREATED);
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int id) {
+        return userService.delete(id);
     }
 
     @GetMapping("/{email}/{password}")
@@ -70,18 +53,16 @@ public class UserController {
         return userService.autenticarUsuario(email, password);
     }
 
-    @DeleteMapping("/delete/{id:\\d+}")
-    public ResponseEntity delete(@PathVariable Integer id) {
-        userService.delete(id);
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    @GetMapping("/emailexist/{email}")
+    public boolean existeEmails(@PathVariable("email") String email) {
+        return userService.emailExists(email);
     }
 
-    /*
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable("id") int id) {
-        return userService.delete(id);
-    }
-*/
+
+
+
+
+
+
 
 }

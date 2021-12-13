@@ -21,6 +21,8 @@ public class User {
     private Integer id;
     private String identification;
     private String name;
+    private Date BirtDay;
+    private String monthBirtDay;
     private String address;
     private String cellPhone;
     private String email;

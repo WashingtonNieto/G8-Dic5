@@ -8,9 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/clothe")
+@CrossOrigin("*")
 
 public class ClotheController {
 
@@ -22,36 +24,27 @@ public class ClotheController {
         return clotheService.getAll();
     }
 
-    @GetMapping("/{id}")
-    public Clothe getById(@PathVariable String id){
-        return clotheService.getById(id).orElse(null);
+    @GetMapping("/{reference}")
+    public Optional<Clothe> getClothe(@PathVariable("reference") String reference){
+        return clotheService.getClothe(reference);
     }
-
-    /*
-    @PutMapping("/update/{reference}")
-    public ResponseEntity<Clothe> update(@RequestBody Clothe clothe){
-        Clothe u = clotheService.update(clothe);
-        return new ResponseEntity(u, HttpStatus.OK);
-    }
-    */
-
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Clothe> update(@RequestBody Clothe clothe){
-        Clothe u = clotheService.update(clothe);
-        return new ResponseEntity(u, HttpStatus.OK);
-    }
-
 
     @PostMapping("/new")
-    public ResponseEntity<Clothe> post(@RequestBody Clothe clothe){
-        Clothe u = clotheService.save(clothe);
-        return new ResponseEntity(u, HttpStatus.CREATED);
+    @ResponseStatus(HttpStatus.CREATED)
+    public Clothe create(@RequestBody Clothe clothe){
+        return clotheService.create(clothe);
     }
 
-    @DeleteMapping("/delete/{reference}")
-    public ResponseEntity delete(@PathVariable String reference) {
-        clotheService.delete(reference);
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Clothe update(@RequestBody Clothe clothe){
+        return clotheService.update(clothe);
+    }
+
+    @DeleteMapping("/{reference}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("reference") String reference) {
+        return clotheService.delete(reference);
     }
 
 

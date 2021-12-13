@@ -21,13 +21,13 @@ public class ClotheRepository {
         return clotheCrudRepository.findAll();
     }
 
-    public Optional<Clothe> getById(String id){return clotheCrudRepository.findById(id); }
+    public Optional<Clothe> getClothe(String id){return clotheCrudRepository.findById(id); }
 
     public Optional<Clothe> getByReference(String reference){
         return clotheCrudRepository.findByReference(reference);
     }
 
-    public Clothe save(Clothe clothe){
+    public Clothe create(Clothe clothe){
         return clotheCrudRepository.save(clothe);
     }
 

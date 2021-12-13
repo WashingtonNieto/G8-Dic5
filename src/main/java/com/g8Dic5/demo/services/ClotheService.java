@@ -19,23 +19,23 @@ public class ClotheService {
         return clotheRepository.getAll();
     }
 
-    public Optional<Clothe> getById(String id){
-        return clotheRepository.getById(id);
+    public Optional<Clothe> getClothe(String id){
+        return clotheRepository.getClothe(id);
     }
 
-    public Clothe save(Clothe clothe){
+    public Clothe create(Clothe clothe){
         if(clothe.getReference() == null)
             return clothe;
-        Optional<Clothe> existeClothe = getById((clothe.getReference()));
+        Optional<Clothe> existeClothe = getClothe((clothe.getReference()));
 
         if(existeClothe.isPresent())
             return clothe;
 
-        return clotheRepository.save(clothe);
+        return clotheRepository.create(clothe);
     }
 
     public Clothe update(Clothe clothe){
-        Optional<Clothe> existeClothe = getById(clothe.getReference());
+        Optional<Clothe> existeClothe = getClothe(clothe.getReference());
 
         if(existeClothe.isEmpty()){
             return clothe;
@@ -49,10 +49,11 @@ public class ClotheService {
         existeClothe.get().setPrice((clothe.getPrice()));
         existeClothe.get().setQuantity((clothe.getQuantity()));
         existeClothe.get().setPhotography((clothe.getPhotography()));
-        return clotheRepository.save(existeClothe.get());
+        return clotheRepository.create(existeClothe.get());
     }
 
-    public void delete(String id){
+    public boolean delete(String id){
         clotheRepository.delete(id);
+        return false;
     }
 }

@@ -19,23 +19,23 @@ public class UserRepository {
         return userCrudRepository.findAll();
     }
 
-    public Optional<User> getById(Integer id){
+    public Optional<User> getUser(int id){
         return userCrudRepository.findById(id);
     }
 
-    public Optional<User> getByEmail(String email){
-        return userCrudRepository.findByEmail(email);
-    }
-
-    public User save(User user){
+    public User create(User user){
         return userCrudRepository.save(user);
     }
 
-    public void delete(Integer id){
-        userCrudRepository.deleteById(id);
+    public void update(User user){
+        userCrudRepository.save(user);
     }
 
-    public boolean existeEmail(String email) {
+    public void delete(User user){
+        userCrudRepository.delete(user);
+    }
+
+    public boolean emailExists(String email) {
         Optional<User> usuario = userCrudRepository.findByEmail(email);
 
         return !usuario.isEmpty();
@@ -44,5 +44,13 @@ public class UserRepository {
     public Optional<User> autenticarUsuario(String email, String password) {
         return userCrudRepository.findByEmailAndPassword(email, password);
     }
+
+    public Optional<User> lastUserId(){
+        return userCrudRepository.findTopByUserByIdDesc();
+    }
+
+
+
+
 
 }

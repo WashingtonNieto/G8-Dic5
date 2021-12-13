@@ -11,10 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
-
 public class Clothe {
-
     @Id
     private String reference;
     private String category;
