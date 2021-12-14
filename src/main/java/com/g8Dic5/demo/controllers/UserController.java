@@ -57,12 +57,4 @@ public class UserController {
     public boolean existeEmails(@PathVariable("email") String email) {
         return userService.emailExists(email);
     }
-
-
-
-
-
-
-
-
 }
