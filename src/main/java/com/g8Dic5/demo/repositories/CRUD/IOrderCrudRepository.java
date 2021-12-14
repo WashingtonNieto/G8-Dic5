@@ -9,9 +9,11 @@ import java.util.Optional;
 
 public interface IOrderCrudRepository extends MongoRepository<Order, Integer> {
 
+    Optional<Order> findById(int id);
+
     //Retorna las ordenes de pedido que coicidan con la zona recibida por parametro
     @Query("{'salesMan.zone': ?0}")
-    List<Order> findByZone(final String country);
+    List<Order> findByZone(final String zone);
 
     //Retorna las ordenes x estado
     @Query("{status: ?0}")
@@ -19,4 +21,5 @@ public interface IOrderCrudRepository extends MongoRepository<Order, Integer> {
 
     //para seleccionar la orden con el id maximo
     Optional<Order> findTopByOrderByIdDesc();
+
 }

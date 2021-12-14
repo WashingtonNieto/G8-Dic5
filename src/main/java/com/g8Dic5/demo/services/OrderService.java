@@ -22,7 +22,7 @@ public class OrderService {
 
     public Order create(Order order) {
         //obtiene el maximo id existente en la coleccion
-        Optional<Order> orderIdMaximo = orderRepository.LastOrderId();
+        Optional<Order> orderIdMaximo = orderRepository.LastUserId();
 
         //si el id de la orden que se recibe como parametro es nulo, entonces valida el maximo id existente en bdatos
         if(order.getId() == null) {
@@ -68,4 +68,16 @@ public class OrderService {
         return aBoolean;
     }
 
+    //Ordenes de pedido asociadas a los asesores de una zona
+    public List<Order> findByZone(String zona){
+        return orderRepository.findByZone(zona);
+    }
+
+    //public List<Order> orderSalesManByDate(String dateStr, int id){
+    //    return orderRepository.orderSalesManByDate(dateStr, id);
+    //}
+
+    //public List<Order> orderSalesManByState(String state, Integer id){
+    //    return orderRepository.orderSalesManByState(state,id);
+    //}
 }

@@ -1,9 +1,7 @@
 package com.g8Dic5.demo.repositories;
 
 import com.g8Dic5.demo.models.Clothe;
-import com.g8Dic5.demo.models.User;
 import com.g8Dic5.demo.repositories.CRUD.IClotheCrudRepository;
-import com.g8Dic5.demo.repositories.CRUD.IUserCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

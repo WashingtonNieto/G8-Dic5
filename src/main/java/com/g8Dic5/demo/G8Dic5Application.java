@@ -22,9 +22,6 @@ public class G8Dic5Application implements CommandLineRunner {
 	@Autowired
 	private IOrderCrudRepository orderCrudRepository;
 
-	@Autowired
-	private MongoTemplate mongoTemplate;
-
 	public static void main(String[] args) {
 		SpringApplication.run(G8Dic5Application.class, args);
 	}
@@ -33,9 +30,9 @@ public class G8Dic5Application implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		//IClotheCrudRepository.deleteAll();
-		//IUserCrudRepository.deleteAll();
-		//IOrderCrudRepository.deleteAll();
+		clotheCrudRepository.deleteAll();
+		userCrudRepository.deleteAll();
+		orderCrudRepository.deleteAll();
 
 	}
 }
