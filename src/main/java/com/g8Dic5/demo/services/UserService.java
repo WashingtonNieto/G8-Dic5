@@ -59,11 +59,11 @@ public class UserService {
                 if(user.getName()!=null) {
                     existeUser.get().setName((user.getName()));
                 }
-                if(user.getBirtDay()!=null) {
-                    existeUser.get().setBirtDay((user.getBirtDay()));
+                if(user.getBirthtDay()!=null) {
+                    existeUser.get().setBirthtDay((user.getBirthtDay()));
                 }
-                if(user.getMonthBirtDay()!=null) {
-                    existeUser.get().setMonthBirtDay((user.getMonthBirtDay()));
+                if(user.getMonthBirthtDay()!=null) {
+                    existeUser.get().setMonthBirthtDay((user.getMonthBirthtDay()));
                 }
                 if(user.getAddress()!=null) {
                     existeUser.get().setAddress((user.getAddress()));
