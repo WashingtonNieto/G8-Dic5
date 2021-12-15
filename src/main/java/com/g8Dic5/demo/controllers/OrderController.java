@@ -51,19 +51,24 @@ public class OrderController {
     public List<Order> findByZone(@PathVariable("zona") String zona){
         return orderService.findByZone(zona);
     }
-    /*
+
     //Reto 4: ordenes de un asesor por fecha
-    @GetMapping("/date/{date}/{id}")
-    public List<Order> ordersSalesManByDate(@PathVariable("date") String date, @PathVariable("id") int id){
-        return orderService.ordersSalesManByDate(date, id);
+    @GetMapping("/salesman/{id}")
+    public List<Order> ordersSalesManByDate(@PathVariable("id") Integer id){
+        return orderService.orderSalesManByDate(id);
     }
 
     //Reto 4: Ordenes de un asesor x estado
     @GetMapping("/state/{state}/{id}")
-    public List<Order> ordersSalesManByState(@PathVariable("state") String date, @PathVariable("id") int id){
-        return orderService.ordersSalesManByState(date, id);
+    public List<Order> ordersSalesManByState(@PathVariable("state") String state, @PathVariable("id") int id){
+        return orderService.orderSalesManByState(state, id);
     }
 
-    */
+    //Reto 4: Ordenes de un asesor x fecha
+    @GetMapping("/date/{date}/{id}")
+    public List<Order> ordersSalesManByDate(@PathVariable("date") String dateStr, @PathVariable("id") int id){
+        return orderService.ordersSalesManByDate(dateStr, id);
+    }
+
 
 }
