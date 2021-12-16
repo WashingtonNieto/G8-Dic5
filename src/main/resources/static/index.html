@@ -1,26 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Alto Turmeque</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script type="text/javascript" src="js/userForm.js"></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Alto Turmequé</title>
 </head>
 <body>
-    <h1> Alto Turmeque</h1>
-    <div id="resultado"></div>
-    <button onclick="saveUser()">Guardar</button>
-    <div>
-        <input type="number" id="idUser" placeholder="id"><br />
-        <input type="text" id="identificationUser" placeholder="identificacion Usuario"><br />
-        <input type="text" id="nameUser" placeholder="Nombre Usuario"><br />
-        <input type="text" id="addressUser" placeholder="Direccion"><br />
-        <input type="text" id="cellphoneUser" placeholder="Celular"><br />
-        <input type="email" id="emailUser" placeholder="Email"><br />
-        <input type="password" id="passwordUser" placeholder="password"><br />
-        <input type="text" id="zoneUser" placeholder="Zona"><br />
-        <input type="text" id="typeUser" placeholder="Tipo"><br />
+<div class="container bg-light w-50 mt-5">
+    <img src="images/AltoTurmeque.jpeg"
+    width="400"
+    height="300">
+    <div id="alerta" class="alert alert-info alert-dismissible">
+        <strong>Información:</strong> <span id="mensaje"></span>
+        <button class="close">&times;</button>
     </div>
+    <form>
+        <div class="mb-3">
+            <label for="inputEmail" class="form-label">Email</label>
+            <input type="email" class="form-control mb-3" id="inputEmail">
+            <p class="text-danger err">*Debe ingresar el campo Email, y este debe ser un email valido.</p>
+        </div>
+        <div class="mb-3">
+            <label for="inputPassword" class="form-label">Password</label>
+            <input type="password" class="form-control mb-3" id="inputPassword">
+            <p class="text-danger err">*Debe ingresar el campo Password</p>
+        </div>
+        <button id="autenticate" type="button" class="btn btn-primary text-center mt-5">Ingresar</button>
+    </form>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="js/login/login.js"></script>
+    <script src="js/util/util.js"></script>
+</div>
 </body>
 </html>
