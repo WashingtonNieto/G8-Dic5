@@ -46,5 +46,16 @@ public class ClotheController {
         return clotheService.delete(reference);
     }
 
+    //Reto 5
+    @GetMapping("/price/{price}")
+    public List<Clothe> clotheGetByPrice(@PathVariable("price") double precio){
+        return clotheService.clotheGetByPrice(precio);
+    }
+
+    @GetMapping("/description/{description}")
+    public List<Clothe> findByDescriptionLike(@PathVariable("description") String description){
+        return clotheService.findByDescriptionLike(description);
+    }
+
 
 }

@@ -30,6 +30,4 @@ public class User {
     private String zone;
     private String type;
 
-    public User(String email, String password, String no_definido) {
-    }
 }

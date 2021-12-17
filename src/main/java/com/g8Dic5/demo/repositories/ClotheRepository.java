@@ -33,5 +33,13 @@ public class ClotheRepository {
         clotheCrudRepository.deleteById(id);
     }
 
+    //Reto 5
+    public List<Clothe> clotheGetByPrice(double precio){
+        return clotheCrudRepository.findByPriceLessThanEqual(precio);
+    }
+
+    public List<Clothe> findByDescriptionLike(String description){
+        return clotheCrudRepository.findByDescriptionLike(description);
+    }
 
 }

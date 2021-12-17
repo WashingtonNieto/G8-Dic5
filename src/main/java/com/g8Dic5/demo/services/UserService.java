@@ -14,13 +14,27 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    public Optional<User> getUser(int id){
+        return userRepository.getUser(id);
+    }
+
     public List<User> getAll()
     {
         return userRepository.getAll();
     }
 
-    public Optional<User> getUser(int id){
-        return userRepository.getUser(id);
+    public boolean emailExists(String email) {
+        return userRepository.emailExists(email);
+    }
+
+    public User autenticateUsuario(String email, String password) {
+        Optional<User> usuario = userRepository.autenticateUser(email, password);
+
+        if (usuario.isEmpty()) {
+            return new User();
+        } else {
+            return usuario.get();
+        }
     }
 
     public User create(User user){
@@ -83,12 +97,27 @@ public class UserService {
                 if(user.getType()!=null) {
                     existeUser.get().setType((user.getType()));
                 }
-                return userRepository.create(existeUser.get());
+                userRepository.update(existeUser.get());
+                return existeUser.get();
+            }else {
+                return user;
             }
+        }else{
+                return user;
         }
-        return user;
     }
 
+    public boolean delete(int userId){
+        Optional<User> usuario = getUser(userId);
+        if(usuario.isEmpty()){
+            return false;
+        }else{
+            userRepository.delete(usuario.get());
+            return true;
+        }
+    }
+
+/*
     public boolean delete(int userId){
         Boolean aBoolean = getUser(userId).map(user ->{
             userRepository.delete(user);
@@ -96,19 +125,11 @@ public class UserService {
         }).orElse(false);
         return aBoolean;
     }
-
-    public boolean emailExists(String email) {
-        return userRepository.emailExists(email);
+*/
+    public List<User> birthtDayList(String monthBirthtDay){
+        return userRepository.birthtDayList(monthBirthtDay);
     }
 
-    public User autenticarUsuario(String email, String password) {
-        Optional<User> usuario = userRepository.autenticarUsuario(email, password);
 
-        if (usuario.isEmpty()) {
-            return new User(email, password, "NO DEFINIDO");
-        } else {
-            return usuario.get();
-        }
-    }
 
 }

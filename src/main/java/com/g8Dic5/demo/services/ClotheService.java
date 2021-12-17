@@ -56,4 +56,13 @@ public class ClotheService {
         clotheRepository.delete(id);
         return false;
     }
+
+    //Reto 5
+    public List<Clothe> clotheGetByPrice(double price){
+        return clotheRepository.clotheGetByPrice(price);
+    }
+
+    public List<Clothe> findByDescriptionLike(String description){
+        return clotheRepository.findByDescriptionLike(description);
+    }
 }

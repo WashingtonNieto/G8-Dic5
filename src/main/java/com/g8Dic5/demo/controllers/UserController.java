@@ -49,12 +49,19 @@ public class UserController {
     }
 
     @GetMapping("/{email}/{password}")
-    public User autenticarUsuario(@PathVariable("email") String email, @PathVariable("password") String password) {
-        return userService.autenticarUsuario(email, password);
+    public User autenticateUsuario(@PathVariable("email") String email, @PathVariable("password") String password) {
+        return userService.autenticateUsuario(email, password);
     }
 
     @GetMapping("/emailexist/{email}")
     public boolean existeEmails(@PathVariable("email") String email) {
         return userService.emailExists(email);
     }
+
+    @GetMapping("/birthday/{month}")
+    public List<User> birthtDayList(@PathVariable("month") String monthBirthtDay) {
+
+        return userService.birthtDayList(monthBirthtDay);
+    }
+
 }
