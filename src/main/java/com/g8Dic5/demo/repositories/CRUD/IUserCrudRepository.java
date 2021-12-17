@@ -15,7 +15,7 @@ public interface IUserCrudRepository extends MongoRepository<User, Integer> {
     Optional<User> findByEmailAndPassword(String email,String password);
 
     //Reto 5
-    List<User> findByMonthBirthtDate(String monthBirthtDay);
+    List<User> findByMonthBirthtDay(String monthBirthtDay);
 
     //para seleccionar el usuario con el id maximo
     Optional<User> findTopByOrderByIdDesc();

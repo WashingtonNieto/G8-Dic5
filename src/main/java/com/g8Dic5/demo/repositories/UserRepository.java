@@ -51,7 +51,7 @@ public class UserRepository {
 
     //Reto 5
     public List<User> birthtDayList(String monthBirthtDay){
-        return userCrudRepository.findByMonthBirthtDate(monthBirthtDay);
+        return userCrudRepository.findByMonthBirthtDay(monthBirthtDay);
     }
 
 
