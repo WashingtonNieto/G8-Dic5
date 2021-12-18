@@ -73,7 +73,8 @@ function autenticate() {
 
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: `http://localhost:8080/api/user/${inputEmail}/${inputPassword}`,
+        //url: `http://localhost:8080/api/user/${inputEmail}/${inputPassword}`,
+        url: `http://150.230.78.55:8080/api/user/${inputEmail}/${inputPassword}`,
 
         // especifica el tipo de petición http: POST, GET, PUT, DELETE
         type: 'GET',

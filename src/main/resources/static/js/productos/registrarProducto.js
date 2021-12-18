@@ -35,7 +35,8 @@ function registrar() {
 
         $.ajax({
             // la URL para la petición (url: "url al recurso o endpoint")
-            url: "http://localhost:8080/api/accessory/new",
+            //url: "http://localhost:8080/api/clothe/new",
+            url: "http://150.230.78.55:8080/api/clothe/new",
             // la información a enviar
             // (también es posible utilizar una cadena de datos)
             //si el metodo del servicio recibe datos, es necesario definir el parametro adicional
