@@ -46,7 +46,7 @@ public class ClotheController {
         return clotheService.delete(reference);
     }
 
-    //Reto 5
+    //Reto 5 - 17diciembre2021
     @GetMapping("/price/{price}")
     public List<Clothe> clotheGetByPrice(@PathVariable("price") double precio){
         return clotheService.clotheGetByPrice(precio);
